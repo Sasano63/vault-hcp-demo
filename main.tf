@@ -10,8 +10,8 @@ terraform {
 }
 
 provider "hcp" {
-  client_id     = "var.client-id"
-  client_secret = "var.client-secret"
+  client_id     = var.client-id
+  client_secret = var.client-secret
 }
 
 resource "hcp_hvn" "vault-demo-hvn" {
