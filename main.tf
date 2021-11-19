@@ -22,7 +22,7 @@ resource "hcp_hvn" "vault-demo-hvn" {
 }
 
 resource "hcp_vault_cluster" "vault_demo_cluster" {
-  hvn_id     = hcp_hvn.vault-hvn.vault-hvn
+  hvn_id     = hcp_hvn.vault-demo-hvn.vault-hvn
   cluster_id = "hcp-tf-vault_demo_cluster"
 }
 
