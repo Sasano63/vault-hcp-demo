@@ -6,10 +6,20 @@ variable "client-secret" {
 }
 
 variable "region" {
+    description = "AWS region into which HCP Vault as well as AWS resources are to be deployed"
     default = "eu-central-1"
 }
 
-variable "cidr_block" {
+variable "cidr-block" {
     default = "172.26.16.0/20"
+}
+
+variable "vault-tier" {
+    description = "Tier of HCP Vault cluster"
+    default = "dev"
+}
+
+variable "aws-cidr" {
+        default = "172.27.16.0/20"
 }
 
