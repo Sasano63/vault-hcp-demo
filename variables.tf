@@ -23,3 +23,6 @@ variable "aws-cidr" {
         default = "172.27.16.0/20"
 }
 
+variable "peer-id" {
+       default = "dev"
+}
