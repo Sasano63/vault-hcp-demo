@@ -21,11 +21,11 @@ resource "hcp_hvn" "vault-demo-hvn" {
   cidr_block     = var.cidr_block
 }
 
-resource "hcp_vault_cluster" "vault_demo_cluster" {
-  hvn_id     = hcp_hvn.vault-demo-hvn.vault-hvn
-  cluster_id = "hcp-tf-vault_demo_cluster"
+resource "hcp_vault_cluster" "vault-demo-cluster" {
+  hvn_id     = hcp_hvn.vault-demo-hvn.hvn_id
+  cluster_id = "hcp-tf-vault-demo-cluster"
 }
 
 resource "hcp_vault_cluster_admin_token" "vault_admin_token" {
-  cluster_id = hcp_vault_cluster.vault_demo_cluster.hcp-tf-vault_demo_cluster
+  cluster_id = hcp_vault_cluster.vault-demo-cluster.hcp-tf-vault-demo-cluster
 }
