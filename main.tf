@@ -27,5 +27,5 @@ resource "hcp_vault_cluster" "vault-demo-cluster" {
 }
 
 resource "hcp_vault_cluster_admin_token" "vault_admin_token" {
-  cluster_id = hcp_vault_cluster.vault-demo-cluster.hcp-tf-vault-demo-cluster
+  cluster_id = hcp_vault_cluster.vault-demo-cluster.cluster_id
 }
