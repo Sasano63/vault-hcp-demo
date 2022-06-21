@@ -16,7 +16,7 @@ variable "cidr-block" {
 
 variable "vault-tier" {
     description = "Tier of HCP Vault cluster"
-    default = "standard_small"
+    default = "plus_small"
 }
 
 variable "aws-cidr" {
