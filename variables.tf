@@ -11,16 +11,16 @@ variable "region" {
 }
 
 variable "cidr-block" {
-    default = "172.26.16.0/20"
+    default = "172.26.0.0/20"
 }
 
 variable "vault-tier" {
     description = "Tier of HCP Vault cluster"
-    default = "dev"
+    default = "plus_small"
 }
 
 variable "aws-cidr" {
-        default = "172.27.16.0/20"
+        default = "172.27.0.0/20"
 }
 
 variable "peer-id" {
