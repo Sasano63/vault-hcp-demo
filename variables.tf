@@ -23,6 +23,13 @@ variable "aws-cidr" {
         default = "172.27.0.0/20"
 }
 
+variable "subnet-block1" {
+    default = "172.27.0.0/22"
+}
+
+variable "subnet-block2" {
+    default = "172.27.4.0/22"
+}
 variable "peer-id" {
        default = "dev"
 }
