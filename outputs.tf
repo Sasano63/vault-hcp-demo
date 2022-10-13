@@ -18,3 +18,9 @@ output "primary_token" {
   description = "Token"
   sensitive = true
 }
+
+output "vpc" {
+  value = aws_vpc.peering_vpc.id
+  description = "ID of the AWS VPC"
+}
+
