@@ -28,7 +28,6 @@ resource "aws_route_table" "rtb_public" {
 }
 
 resource "aws_default_security_group" "default_sg_vpc" {
-  name   = "default-sg-vpc"
   vpc_id = aws_vpc.peering_vpc.id
 
   ingress {
