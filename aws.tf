@@ -15,6 +15,7 @@ resource "aws_internet_gateway" "vault-igw" {
   }
 }
 
+
 resource "aws_route_table" "rtb_public" {
   vpc_id = aws_vpc.peering_vpc.id
 
@@ -22,8 +23,13 @@ resource "aws_route_table" "rtb_public" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.vault-igw.id
   }
+
+  route {
+    cidr_block = var.cidr-block
+    vpc_peering_connection_id = hcp_aws_network_peering.vault-peering.id
+  }
    tags = {
-    Name = "Vault public RTB"
+    Name = "vault RTB"
   } 
 }
 
