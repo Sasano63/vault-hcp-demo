@@ -1,5 +1,7 @@
 resource "aws_vpc" "peering_vpc" {
   cidr_block = var.aws-cidr
+  enable_dns_support   = true
+  enable_dns_hostnames = true
     tags = {
     Name = "hcp vault peering vpc"
   }
