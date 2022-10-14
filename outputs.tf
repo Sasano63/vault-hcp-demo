@@ -24,3 +24,7 @@ output "vpc" {
   description = "ID of the AWS VPC"
 }
 
+output "rtb" {
+  value = aws_route_table.rtb_public.id
+}
+
