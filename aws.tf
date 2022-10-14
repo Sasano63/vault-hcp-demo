@@ -26,7 +26,7 @@ resource "aws_route_table" "rtb_public" {
 
   route {
     cidr_block = var.cidr-block
-    vpc_peering_connection_id = hcp_aws_network_peering.vault-peering.id
+    vpc_peering_connection_id = hcp_aws_network_peering.vault-peering.provider_peering_id
   }
    tags = {
     Name = "vault RTB"
