@@ -27,8 +27,8 @@ resource "aws_route_table" "rtb_public" {
   } 
 }
 
-resource "aws_security_group" "sg_vpc" {
-  name   = "sg_vpc"
+resource "aws_default_security_group" "default_sg_vpc" {
+  name   = "default-sg-vpc"
   vpc_id = aws_vpc.peering_vpc.id
 
   ingress {
@@ -55,24 +55,6 @@ resource "aws_security_group" "sg_vpc" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  #   ingress {
-  #   from_port   = 8200
-  #   to_port     = 8200
-  #   protocol    = "tcp"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
-  # ingress {
-  #   from_port   = 8201
-  #   to_port     = 8201
-  #   protocol    = "tcp"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
-  # ingress {
-  #   from_port   = 2223
-  #   to_port     = 2225
-  #   protocol    = "tcp"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
     ingress {
     from_port   = 3306
     to_port     = 3306
@@ -85,10 +67,10 @@ resource "aws_security_group" "sg_vpc" {
     protocol  = "-1"
     self      = true
   }
-  # egress {
-  #   from_port   = 0
-  #   to_port     = 0
-  #   protocol    = "-1"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
