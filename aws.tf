@@ -5,3 +5,10 @@ resource "aws_vpc" "peering_vpc" {
   }
 }
 
+resource "aws_internet_gateway" "vault-igw" {
+  vpc_id = aws_vpc.peering_vpc.id
+
+  tags = {
+    Name = "hcp vault demo igw"
+  }
+}
