@@ -7,6 +7,30 @@ resource "aws_vpc" "peering_vpc" {
   }
 }
 
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+resource "aws_subnet" "subnet1" {
+  vpc_id     = aws_vpc.peering_vpc.id
+  cidr_block = var.subnet-block1
+  availability_zone = data.aws_availability_zones.available.names[0]
+
+  tags = {
+    Name = "db-subnet-1"
+  }
+}
+
+resource "aws_subnet" "subnet2" {
+  vpc_id     = aws_vpc.peering_vpc.id
+  cidr_block = var.subnet-block2
+  availability_zone = data.aws_availability_zones.available.names[1]
+
+  tags = {
+    Name = "db-subnet-2"
+  }
+}
+
 resource "aws_internet_gateway" "vault-igw" {
   vpc_id = aws_vpc.peering_vpc.id
 
@@ -15,14 +39,23 @@ resource "aws_internet_gateway" "vault-igw" {
   }
 }
 
-
 resource "aws_route_table" "rtb_public" {
   vpc_id = aws_vpc.peering_vpc.id
 
-  route {
+route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.vault-igw.id
   }
+
+resource "aws_route_table_association" "rtb_subnet1" {
+  subnet_id      = aws_subnet.subnet1.id
+  route_table_id = aws_route_table.rtb_public.id
+}
+
+resource "aws_route_table_association" "rtb_subnet2" {
+  subnet_id      = aws_subnet.subnet2.id
+  route_table_id = aws_route_table.rtb_public.id
+}
 
   route {
     cidr_block = var.cidr-block
@@ -85,3 +118,8 @@ resource "aws_default_security_group" "default_sg_vpc" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+
+
+
+
