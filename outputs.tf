@@ -16,7 +16,7 @@ output "namespace" {
 output "primary_token" {
   value       = hcp_vault_cluster_admin_token.vault-admin-token.token
   description = "Token"
-  # sensitive = true
+  sensitive = true
 }
 
 output "vpc" {
