@@ -34,3 +34,17 @@ variable "subnet-block1" {
 variable "subnet-block2" {
     default = "172.27.2.0/24"
 }
+
+variable "prefix" {
+    type = string
+    description = "prefix for test instance"
+}
+
+variable "key" {
+    description = "keys to be used to access EC2 instance"
+}
+
+variable "ami" {
+    description = "ID of AMI to be used, default is Amazon Linux"
+    default = "ami-05ff5eaef6149df49"
+}
