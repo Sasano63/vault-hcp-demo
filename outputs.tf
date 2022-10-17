@@ -24,10 +24,6 @@ output "vpc" {
   description = "ID of the AWS VPC"
 }
 
-output "rtb" {
-  value = aws_route_table.rtb_public.id
-}
-
 output "subnet1" {
   value = aws_subnet.subnet1.id
 }
@@ -36,3 +32,6 @@ output "subnet2" {
   value = aws_subnet.subnet2.id
 }
 
+output "public_dns" {
+  value = aws_instance.test-instance.public_dns
+}
