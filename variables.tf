@@ -37,7 +37,7 @@ variable "subnet-block2" {
 
 variable "prefix" {
   type        = string
-  description = "prefix for test instance"
+  description = "prefix to tag resources"
 }
 
 variable "key" {
