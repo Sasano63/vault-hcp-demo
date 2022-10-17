@@ -3,7 +3,7 @@ terraform {
 
   required_providers {
     hcp = {
-      source = "hashicorp/hcp"
+      source  = "hashicorp/hcp"
       version = "0.32.0"
     }
     aws = {
@@ -30,10 +30,10 @@ resource "hcp_hvn" "vault-demo-hvn" {
 }
 
 resource "hcp_vault_cluster" "vault-demo-cluster" {
-  hvn_id     = hcp_hvn.vault-demo-hvn.hvn_id
-  cluster_id = "hcp-tf-vault-demo-cluster"
+  hvn_id          = hcp_hvn.vault-demo-hvn.hvn_id
+  cluster_id      = "hcp-tf-vault-demo-cluster"
   public_endpoint = true
-  tier = var.vault-tier
+  tier            = var.vault-tier
 }
 
 resource "hcp_vault_cluster_admin_token" "vault-admin-token" {
