@@ -47,6 +47,15 @@ route {
     gateway_id = aws_internet_gateway.vault-igw.id
   }
 
+  route {
+    cidr_block = var.cidr-block
+    vpc_peering_connection_id = hcp_aws_network_peering.vault-peering.provider_peering_id
+  }
+   tags = {
+    Name = "vault RTB"
+  } 
+}
+
 resource "aws_route_table_association" "rtb_subnet1" {
   subnet_id      = aws_subnet.subnet1.id
   route_table_id = aws_route_table.rtb_public.id
@@ -55,15 +64,6 @@ resource "aws_route_table_association" "rtb_subnet1" {
 resource "aws_route_table_association" "rtb_subnet2" {
   subnet_id      = aws_subnet.subnet2.id
   route_table_id = aws_route_table.rtb_public.id
-}
-
-  route {
-    cidr_block = var.cidr-block
-    vpc_peering_connection_id = hcp_aws_network_peering.vault-peering.provider_peering_id
-  }
-   tags = {
-    Name = "vault RTB"
-  } 
 }
 
 resource "aws_default_security_group" "default_sg_vpc" {
