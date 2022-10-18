@@ -20,7 +20,7 @@ sudo mv vault /usr/local/bin/
 
 vault -autocomplete-install
 complete -C /usr/local/bin/vault vault
-sudo yum install mysql
+sudo yum install -y mysql
 
 # #mlock nutzen
 # sudo setcap cap_ipc_lock=+ep /usr/local/bin/vault
