@@ -35,7 +35,7 @@ data "tfe_outputs" "aws-network" {
 }
 
 resource "hcp_vault_cluster" "vault-demo-cluster" {
-  hvn_id          = data.tfe_outputs.aws-network.hvn
+  hvn_id          = data.tfe_outputs.aws-network.values.hvn
   cluster_id      = "${var.prefix}-hcp-vault-demo-cluster"
   public_endpoint = true
   tier            = var.vault-tier
