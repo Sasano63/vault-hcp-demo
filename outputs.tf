@@ -19,19 +19,6 @@ output "primary_token" {
   sensitive   = true
 }
 
-/* output "vpc" {
-  value       = aws_vpc.peering_vpc.id
-  description = "ID of the AWS VPC"
-}
-
-output "subnet1" {
-  value = aws_subnet.subnet1.id
-}
-
-output "subnet2" {
-  value = aws_subnet.subnet2.id
-} */
-
 /* output "public_dns" {
   value = aws_instance.test-instance.public_dns
 } */
