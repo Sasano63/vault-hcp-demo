@@ -18,20 +18,25 @@ provider "hcp" {
   client_secret = var.client-secret
 }
 
-provider "aws" {
+/* provider "aws" {
   region = var.region
-}
+} */
 
-resource "hcp_hvn" "vault-demo-hvn" {
+/* resource "hcp_hvn" "vault-demo-hvn" {
   hvn_id         = "vault-hvn"
   cloud_provider = "aws"
   region         = var.region
   cidr_block     = var.cidr-block
+} */
+
+data "tfe_outputs" "aws-network" {
+  organization = "sasano"
+  workspace = "aws-network"
 }
 
 resource "hcp_vault_cluster" "vault-demo-cluster" {
-  hvn_id          = hcp_hvn.vault-demo-hvn.hvn_id
-  cluster_id      = "hcp-tf-vault-demo-cluster"
+  hvn_id          = data.tfe_outputs.aws-network.hvn
+  cluster_id      = "${prefix}-hcp-vault-demo-cluster"
   public_endpoint = true
   tier            = var.vault-tier
 }
@@ -40,7 +45,7 @@ resource "hcp_vault_cluster_admin_token" "vault-admin-token" {
   cluster_id = hcp_vault_cluster.vault-demo-cluster.cluster_id
 }
 
-resource "hcp_aws_network_peering" "vault-peering" {
+/* resource "hcp_aws_network_peering" "vault-peering" {
   hvn_id          = hcp_hvn.vault-demo-hvn.hvn_id
   peering_id      = var.peer-id
   peer_vpc_id     = aws_vpc.peering_vpc.id
@@ -58,4 +63,4 @@ resource "hcp_hvn_route" "vault-hvn-route" {
 resource "aws_vpc_peering_connection_accepter" "peer" {
   vpc_peering_connection_id = hcp_aws_network_peering.vault-peering.provider_peering_id
   auto_accept               = true
-}
+} */

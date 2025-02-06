@@ -8,11 +8,11 @@ exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 sudo yum install -y yum-utils
 sudo yum install -y jq
 
-curl --remote-name "https://releases.hashicorp.com/vault/1.12.0/vault_1.12.0_linux_amd64.zip"
-curl --remote-name "https://releases.hashicorp.com/vault/1.12.0/vault_1.12.0_SHA256SUMS"
-curl --remote-name "https://releases.hashicorp.com/vault/1.12.0/vault_1.12.0_SHA256SUMS.sig"
+curl --remote-name "https://releases.hashicorp.com/vault/1.18.3/vault_1.18.3_linux_amd64.zip"
+curl --remote-name "https://releases.hashicorp.com/vault/1.18.3/vault_1.18.3_SHA256SUMS"
+curl --remote-name "https://releases.hashicorp.com/vault/1.18.3/vault_1.18.3_SHA256SUMS.sig"
 
-unzip vault_1.12.0_linux_amd64.zip
+unzip vault_1.18.3_linux_amd64.zip
 
 sudo chown root:root vault
 

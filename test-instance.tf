@@ -1,4 +1,4 @@
-
+/* 
 data "template_file" "user_data" {
   template = file("${path.module}/vault.sh")
 #   vars = {
@@ -18,4 +18,4 @@ resource "aws_instance" "test-instance" {
   tags = {
     Name = "${var.prefix}-test-instance"
   }
-}
+} */

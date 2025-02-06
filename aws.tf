@@ -1,4 +1,4 @@
-resource "aws_vpc" "peering_vpc" {
+/* resource "aws_vpc" "peering_vpc" {
   cidr_block           = var.aws-cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -123,3 +123,4 @@ resource "aws_default_security_group" "default_sg_vpc" {
 
 
 
+ */
