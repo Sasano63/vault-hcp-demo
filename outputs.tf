@@ -32,6 +32,6 @@ output "subnet2" {
   value = aws_subnet.subnet2.id
 } */
 
-output "public_dns" {
+/* output "public_dns" {
   value = aws_instance.test-instance.public_dns
-}
+} */
