@@ -19,6 +19,11 @@ output "primary_token" {
   sensitive   = true
 }
 
+output "cluster_id" {
+  value = hcp_vault_cluster.vault-demo-cluster.cluster_id
+  description = "ID of the HCP Vault cluster"
+}
+
 /* output "public_dns" {
   value = aws_instance.test-instance.public_dns
 } */
